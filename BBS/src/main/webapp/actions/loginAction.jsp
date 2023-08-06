@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('Already Logged-IN')");
-		script.println("location.href = 'main.jsp'");
+		script.println("location.href = '../views/main.jsp'");
 		script.println("</script>");
 	} 
 	
@@ -36,7 +36,7 @@
 		session.setAttribute("userID",user.getUserID());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = 'main.jsp'");
+		script.println("location.href = '../views/main.jsp'");
 		script.println("</script>");
 		// response.sendRedirect("main.jsp");
 	} else if(result == 0){

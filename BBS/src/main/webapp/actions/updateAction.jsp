@@ -23,7 +23,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('Please Login')");
-			script.println("location.href = 'login.jsp'");
+			script.println("location.href = '../views/login.jsp'");
 			script.println("</script>");
 		}
 		
@@ -37,7 +37,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글입니다.')");
-			script.println("location.href = 'bbs.jsp'");
+			script.println("location.href = '../views/bbs.jsp'");
 			script.println("</script>");
 		}
 		
@@ -46,7 +46,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다..')");
-			script.println("location.href = 'bbs.jsp'");
+			script.println("location.href = '../views/bbs.jsp'");
 			script.println("</script>");
 		} else{
 			if(request.getParameter("bbsTitle") == null || request.getParameter("bbsContent")  == null ||
@@ -70,7 +70,7 @@
 				else{
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("location.href = 'bbs.jsp'");
+					script.println("location.href = '../views/bbs.jsp'");
 					script.println("</script>");
 				}
 			}

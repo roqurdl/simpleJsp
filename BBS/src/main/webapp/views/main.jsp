@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 </head>
 <body>
@@ -29,8 +29,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-bollapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">메인</a></li>
-				<li class="active"><a href="bbs.jsp">게시판</a></li>
+				<li class="active"><a href="main.jsp">메인</a></li>
+				<li><a href="bbs.jsp">게시판</a></li>
 				<li><a href="upload.jsp">파일업로드</a></li>
 				<li><a href="fileList.jsp">파일목록</a></li>
 			</ul>
@@ -57,7 +57,7 @@
 					data-toggle="dropdown" role="button" aria-hashpopup="true"
 					aria-expanded="false">회원관리<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">로그아웃</a></li>
+						<li><a href="../actions/logoutAction.jsp">로그아웃</a></li>
 						</ul>
 				</li>
 			</ul>	
@@ -67,29 +67,47 @@
 		</div>
 	</nav>
 	
-	<%--글쓰기 창 --%>
-	<div class ="container">
-		<form method="post" action="writeAction.jsp">
-		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd; ">
-			<thead>
-				<tr>
-					<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
-				</tr>
-				<tr>
-					<td><textarea class="form-control" name="bbsContent" maxlength="2048" style="height:350px;"></textarea></td>
-				</tr>
-			</tbody>
-		</table>
-	<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
-	</form>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>웹 사이트 소개</h1>
+				<p>간단한 JSP webpage제작</p>
+				<p><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기</a></p>
+			</div>
+		</div>
 	</div>
 	
+	<%-- 이미지추가 및 전환 (디자인 요소)
+		<div class="container">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="images/1.jpg">
+				</div>
+				<div class="item">
+					<img src="images/2.jpg">
+				</div>
+				<div class="item">
+					<img src="images/3.jpg">
+				</div>
+			</div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+	</div>
+	 --%>
+
+
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 </body>
 </html>

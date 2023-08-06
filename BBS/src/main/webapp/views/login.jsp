@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 </head>
 <body>
@@ -45,7 +45,7 @@
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
 			<div class="jumbotron" style="padding-top: 20px;">
-				<form method="post" action="loginAction.jsp">
+				<form method="post" action="../actions/loginAction.jsp">
 					<h3 style="text-align: center;">로그인 화면</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="ID" name="userID"
@@ -62,6 +62,6 @@
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 </head>
 <body>
@@ -72,7 +72,7 @@
 					data-toggle="dropdown" role="button" aria-hashpopup="true"
 					aria-expanded="false">회원관리<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">로그아웃</a></li>
+						<li><a href="../actions/logoutAction.jsp">로그아웃</a></li>
 						</ul>
 				</li>
 			</ul>	
@@ -119,7 +119,7 @@
 				if(userID != null && userID.equals(bbs.getUserID())){
 			%>
 				<a href="update.jsp?bbsID=<%=bbsID %>" class="btn btn-primary">수정</a>
-				<a onclick="return confirm('정말로 삭제하시겠습니까?');" href="deleteAction.jsp?bbsID=<%=bbsID %>" class="btn btn-primary">삭제</a>
+				<a onclick="return confirm('정말로 삭제하시겠습니까?');" href="../actions/deleteAction.jsp?bbsID=<%=bbsID %>" class="btn btn-primary">삭제</a>
 			<%
 				}
 			%>
@@ -128,6 +128,6 @@
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 </body>
 </html>

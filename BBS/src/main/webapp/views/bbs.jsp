@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 <style type="text/css">
 	a, a:hover {
@@ -127,6 +127,6 @@
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 
 </head>
@@ -66,7 +66,7 @@
 					data-toggle="dropdown" role="button" aria-hashpopup="true"
 					aria-expanded="false">회원관리<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">로그아웃</a></li>
+						<li><a href="../views/logoutAction.jsp">로그아웃</a></li>
 						</ul>
 				</li>
 			</ul>	
@@ -126,6 +126,6 @@
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 </body>
 </html>

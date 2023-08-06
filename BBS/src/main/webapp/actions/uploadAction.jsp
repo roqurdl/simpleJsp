@@ -38,7 +38,7 @@
 			//}else{
 				//DB에 업로드
 				new FileDAO().upload(fileName, sysName);
-				response.sendRedirect("fileList.jsp");
+				response.sendRedirect("../views/fileList.jsp");
 			//}
 		}else{
 			PrintWriter script = response.getWriter();

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('Please Login')");
-			script.println("location.href = 'login.jsp'");
+			script.println("location.href = '../views/login.jsp'");
 			script.println("</script>");
 		}
 		
@@ -37,7 +37,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글입니다.')");
-			script.println("location.href = 'bbs.jsp'");
+			script.println("location.href = '../views/bbs.jsp'");
 			script.println("</script>");
 		}
 		
@@ -46,7 +46,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다..')");
-			script.println("location.href = 'bbs.jsp'");
+			script.println("location.href = '../views/bbs.jsp'");
 			script.println("</script>");
 		} else{
 				BbsDAO bbsDAO = new BbsDAO();
@@ -61,7 +61,7 @@
 				else{
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("location.href = 'bbs.jsp'");
+					script.println("location.href = '../views/bbs.jsp'");
 					script.println("</script>");
 					// response.sendRedirect("bbs.jsp");
 				}

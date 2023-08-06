@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="veiwport" content="width=device-width">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <title>JSP 게시판 웹사이트</title>
 </head>
 <body>
@@ -30,8 +30,8 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-bollapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="bbs.jsp">게시판</a></li>
-				<li class="active"><a href="upload.jsp">파일업로드</a></li>
+				<li class="active"><a href="bbs.jsp">게시판</a></li>
+				<li><a href="upload.jsp">파일업로드</a></li>
 				<li><a href="fileList.jsp">파일목록</a></li>
 			</ul>
 			<%
@@ -67,15 +67,29 @@
 		</div>
 	</nav>
 	
-	<%--파일 업로드 --%>
+	<%--글쓰기 창 --%>
 	<div class ="container">
-		<form method="post" action="uploadAction.jsp" enctype="multipart/form-data">
-			파일: <input type="file" name="file"><br>
-			<input type="submit" class="btn btn-primary pull-right" value="업로드">
-		</form>
+		<form method="post" action="../actions/writeAction.jsp">
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd; ">
+			<thead>
+				<tr>
+					<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+				</tr>
+				<tr>
+					<td><textarea class="form-control" name="bbsContent" maxlength="2048" style="height:350px;"></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+	<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+	</form>
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 </body>
 </html>
