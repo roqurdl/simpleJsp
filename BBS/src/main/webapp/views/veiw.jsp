@@ -19,11 +19,11 @@
 		userID = (String) session.getAttribute("userID");
 	}
 	//
-	int bbsID = 0;
+	String bbsID = "";
 	if(request.getParameter("bbsID") != null){
-		bbsID = Integer.parseInt(request.getParameter("bbsID"));
+	bbsID = request.getParameter("bbsID");
 	}
-	if(bbsID == 0){
+	if(bbsID == ""){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('유효하지 않은 글입니다.')");
@@ -95,7 +95,7 @@
 					<tr>
 						<td style="width: 20%;">글 제목</td>
 						<!-- 특수문자 표시하는설정 XSS -->
-						<td colspan="2"><%= bbs.getBbsTitle().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n","<br>") %></td>
+						<td colspan="2"><%= bbs.getBbsTitle()%></td>
 					</tr>
 					<tr>
 						<td style="width: 20%;">작성자</td>
@@ -108,7 +108,7 @@
 					<tr>
 						<td style="width: 20%;">내용</td>
 						<!-- 특수문자 표시하는설정 XSS -->
-						<td colspan="2" style="height: 200px; text-align:left;"><%= bbs.getBbsContent().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n","<br>") %></td>
+						<td colspan="2" style="height: 200px; text-align:left;"><%= bbs.getBbsContent()%></td>
 					</tr>
 				</tbody>
 			</table>
@@ -123,7 +123,7 @@
 			<%
 				}
 			%>
-			<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
 	

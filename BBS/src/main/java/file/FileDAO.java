@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class FileDAO {
 	//DB연결부
 		private Connection conn;
-		private PreparedStatement pstmt;
+		private Statement stmt;
 		private ResultSet rs;
 		
 		public FileDAO() {
@@ -28,8 +29,8 @@ public class FileDAO {
 		public String getDate() {
 			String SQL = "SELECT NOW()";
 			try {
-				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				rs = pstmt.executeQuery();
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(SQL);
 				if(rs.next()) {
 					return rs.getString(1);
 				}
@@ -42,8 +43,8 @@ public class FileDAO {
 		public int getNext() {
 			String SQL = "SELECT fileID FROM FILE ORDER BY fileID DESC";
 			try {
-				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				rs = pstmt.executeQuery();
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(SQL);
 				if(rs.next()) { 
 					return rs.getInt(1)+1;
 				}
@@ -55,14 +56,10 @@ public class FileDAO {
 		}
 		
 		public int upload (String fileName, String fileRealName) {
-			String SQL = "INSERT INTO FILE VALUES(?, ?, ?, ?)";			
+			String SQL = "INSERT INTO FILE VALUES(" + getNext() + ", '" + fileName + "', '" + fileRealName + "', '" + getDate() + "')";		
 			try {
-				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				pstmt.setInt(1, getNext());
-				pstmt.setString(2, fileName);
-				pstmt.setString(3, fileRealName);
-				pstmt.setString(4, getDate());
-				return pstmt.executeUpdate();
+				stmt = conn.createStatement();
+				return stmt.executeUpdate(SQL);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -70,12 +67,11 @@ public class FileDAO {
 		}
 		
 		public ArrayList<FileDTO> getList (int pageNumber){
-			String SQL = "SELECT * FROM FILE WHERE fileID < ? ORDER BY fileID DESC LIMIT 10";
+			String SQL = "SELECT * FROM FILE WHERE fileID < " + (getNext() - (pageNumber - 1) * 10) + " ORDER BY fileID DESC LIMIT 10";
 			ArrayList<FileDTO> list = new ArrayList<FileDTO>();
 			try {
-				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				pstmt.setInt(1, getNext() - (pageNumber-1)*10);
-				rs = pstmt.executeQuery();
+				Statement stmt = conn.createStatement();
+				rs = stmt.executeQuery(SQL);
 				while(rs.next()) {
 					FileDTO file = new FileDTO();
 					file.setFileID(rs.getInt(1));
@@ -92,11 +88,10 @@ public class FileDAO {
 		
 		//page 기능
 		public boolean nextPage(int pageNumber) {
-			String SQL = "SELECT * FROM FILE WHERE fileID < ?";
+			String SQL = "SELECT * FROM FILE WHERE fileID <"+(getNext() - (pageNumber -1)*10);
 			try {
-				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				pstmt.setInt(1, getNext() - (pageNumber -1)*10);
-				rs = pstmt.executeQuery();
+				Statement stmt = conn.createStatement();
+				rs = stmt.executeQuery(SQL);
 				if(rs.next()) {
 					return true;
 				}

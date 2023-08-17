@@ -50,7 +50,7 @@
 			script.println("</script>");
 		} else{
 				BbsDAO bbsDAO = new BbsDAO();
-				int result = bbsDAO.update(bbsID);
+				int result = bbsDAO.delete(bbsID);
 				if(result == -1){
 					PrintWriter script = response.getWriter();
 					script.println("<script>");

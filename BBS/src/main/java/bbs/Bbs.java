@@ -1,17 +1,17 @@
 package bbs;
 
 public class Bbs {
-	private int bbsID;
+	private String bbsID;
 	private String bbsTitle;
 	private String userID;
 	private String bbsDate;
 	private String bbsContent;
 	private int bbsAvailable;
 	
-	public int getBbsID() {
+	public String getBbsID() {
 		return bbsID;
 	}
-	public void setBbsID(int bbsID) {
+	public void setBbsID(String bbsID) {
 		this.bbsID = bbsID;
 	}
 	public String getBbsTitle() {

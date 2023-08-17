@@ -27,12 +27,12 @@
 			script.println("</script>");
 		}
 		
-		int bbsID = 0;
+		String bbsID = "";
 		if(request.getParameter("bbsID") != null)
 		{
-			bbsID = Integer.parseInt(request.getParameter("bbsID"));
+			bbsID = request.getParameter("bbsID");
 		}
-		if(bbsID ==0)
+		if(bbsID =="")
 		{
 			PrintWriter script = response.getWriter();
 			script.println("<script>");

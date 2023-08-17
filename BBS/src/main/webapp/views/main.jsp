@@ -33,6 +33,10 @@
 				<li><a href="bbs.jsp">게시판</a></li>
 				<li><a href="upload.jsp">파일업로드</a></li>
 				<li><a href="fileList.jsp">파일목록</a></li>
+				<%
+					if(userID == "dumm"){%>
+						<li><a href="fileList.jsp">파일목록</a></li>
+					<% }%>
 			</ul>
 			<%
 				if(userID==null){ //비로그인
@@ -72,12 +76,13 @@
 			<div class="container">
 				<h1>웹 사이트 소개</h1>
 				<p>간단한 JSP webpage제작</p>
-				<p><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기</a></p>
+				<p><a class="btn btn-primary btn-pull" href='#' role="button">자세히 알아보기</a></p>
 			</div>
 		</div>
 	</div>
 	
 	<%-- 이미지추가 및 전환 (디자인 요소)
+	<%=request.getRequestURI()%> ==> page 기능에 사용할 것.
 		<div class="container">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">

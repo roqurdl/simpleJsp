@@ -53,6 +53,8 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href = '../views/main.jsp'");
+			//script.println("location.href = '../views/login.jsp'");
+			//script.println("alert('로그인 해주세요.')");  이 상황에서는 SessionID도 주석처리필요. test시 편의성으로 다음 과정을 생략.
 			script.println("</script>");
 		}
 	}

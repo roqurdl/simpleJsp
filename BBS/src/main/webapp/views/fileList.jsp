@@ -66,7 +66,7 @@
 					data-toggle="dropdown" role="button" aria-hashpopup="true"
 					aria-expanded="false">회원관리<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="../views/logoutAction.jsp">로그아웃</a></li>
+						<li><a href="../actions/logoutAction.jsp">로그아웃</a></li>
 						</ul>
 				</li>
 			</ul>	

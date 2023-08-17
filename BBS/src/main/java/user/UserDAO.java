@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class UserDAO {
 	//DB연결부
 	private Connection conn;
-	private PreparedStatement pstmt;
+//	private PreparedStatement pstmt;
+	private Statement stmt;
 	private ResultSet rs;
 	
 	public UserDAO() {
@@ -23,11 +25,10 @@ public class UserDAO {
 	}
 		}
 	public int login(String userID, String userPassword) {
-		String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
+		String SQL = "SELECT userPassword FROM USER WHERE userID = '"+userID+"'";
 		try {
-			pstmt = conn.prepareStatement(SQL); //SQL Injection 방지			
-			pstmt.setString(1, userID);
-			rs = pstmt.executeQuery();
+			stmt = conn.createStatement(); //SQL Injection 취약.			
+			rs = stmt.executeQuery(SQL);
 			if(rs.next()) {
 				if(rs.getString(1).equals(userPassword)) {
 					return 1; // Login Success
@@ -41,15 +42,10 @@ public class UserDAO {
 		return -2; //DB ERROR
 	}
 	public int join(User user) {
-		String SQL = "INSERT INTO USER VALUES (?,?,?,?,?)";
+		String SQL = "INSERT INTO USER VALUES ('"+user.getUserID()+"','"+user.getUserPassword()+"','"+user.getUserName()+"','"+user.getUserGender()+"','"+user.getUserEmail()+"')";
 		try {
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1,user.getUserID());
-			pstmt.setString(2,user.getUserPassword());
-			pstmt.setString(3,user.getUserName());
-			pstmt.setString(4,user.getUserGender());
-			pstmt.setString(5,user.getUserEmail());
-			return pstmt.executeUpdate();
+			stmt = conn.createStatement();
+			return stmt.executeUpdate(SQL);
 		}catch(Exception e) {
 		e.printStackTrace();
 	}

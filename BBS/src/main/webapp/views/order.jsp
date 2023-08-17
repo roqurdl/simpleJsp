@@ -24,9 +24,6 @@
 	if(session.getAttribute("userID") != null){
 		userID = (String) session.getAttribute("userID");
 	}
-	int pageNumber = 1;
-	if(request.getParameter("pageNumber") != null){
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));}
 
 	%>
 	<nav class="navebar navbar-default">
@@ -75,6 +72,11 @@
 			</ul>	
 			<%
 				}
+			BbsDAO bbsDAO = new BbsDAO();
+			String columnName = request.getParameter("columnName"); // 열 이름을 가져옴
+			int sortOrder = Integer.parseInt(request.getParameter("sortOrder"));
+			int changeSortOrder = (sortOrder == 0) ? 1 : 0;
+			ArrayList<Bbs> list = bbsDAO.getOrder(columnName,sortOrder);
 			%>
 		</div>
 	</nav>
@@ -84,16 +86,16 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd; ">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=bbsID&sortOrder=0">번호</a></th> <!-- bbsID -->
-					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=bbsTitle&sortOrder=0">제목</a></th> <!-- bbsTitle -->
-					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=userID&sortOrder=0">작성자</a></th> <!-- userID -->
-					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=bbsDate&sortOrder=0">작성일</a></th> <!-- bbsDate -->
+					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=bbsID&sortOrder=<%=changeSortOrder %>">번호</a></th> <!-- bbsID -->
+					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=bbsTitle&sortOrder=<%=changeSortOrder %>">제목</a></th> <!-- bbsTitle -->
+					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=userID&sortOrder=<%=changeSortOrder %>">작성자</a></th> <!-- userID -->
+					<th style="background-color: #eeeeee; text-align: center;"><a href="order.jsp?columnName=bbsDate&sortOrder=<%=changeSortOrder %>">작성일</a></th> <!-- bbsDate -->
 				</tr>
 			</thead>
 			<tbody>
 				<%
-					BbsDAO bbsDAO = new BbsDAO();
-					ArrayList<Bbs> list = bbsDAO.getList(pageNumber);
+					
+				    
 					for(int i =0; i < list.size(); i++){
 				%>
 				<tr>
@@ -104,34 +106,15 @@
 					<td><%= list.get(i).getBbsDate().substring(0,11) + list.get(i).getBbsDate().substring(11,13)+ "시" + list.get(i).getBbsDate().substring(14,16) + "분" %></td>  
 				</tr>
 				<% 
-					};
-					
-					String searchText=request.getParameter("searchText");
+					}
 				%>
 			</tbody>
 		</table>
-		</div>	
-		
+
 		<div class= container>
 			<form method="get" name="search" action="searchBbs.jsp">
 				<table class="table table-striped">
 					<tr>
-						<td>
-							<%-- 페이징 처리--%>
-							<%
-								if(pageNumber != 1){
-							%>
-								<a href="bbs.jsp?pageNumber=<%=pageNumber-1 %>"
-									class="btn btn-success btn-arraw-left">이전</a>
-							<%
-								}if(bbsDAO.nextPage(pageNumber + 1)){
-							%>
-								<a href="bbs.jsp?pageNumber=<%=pageNumber+1 %>"
-									class="btn btn-success btn-arraw-left">다음</a>
-							<%
-								}
-							%>
-						</td>
 						<td><select class="form-control" name="searchField">
 								<option value="0">선택</option>
 								<option value="bbsTitle">제목</option>
@@ -145,8 +128,8 @@
 				</table>
 			</form>
 		</div>
-			
 		
+	</div>
 	
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="../js/bootstrap.js"></script>
